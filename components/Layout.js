@@ -8,7 +8,16 @@ export default function Layout({ children }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       {children}
-      <footer>Some footer text</footer>
+      <footer className="flex">
+        <a
+          className="text-white hover:text-gray-300 ml-auto text-xl"
+          href="https://github.com/Danex2/wowtoken"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          github
+        </a>
+      </footer>
     </div>
   );
 }

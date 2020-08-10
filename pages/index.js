@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="flex-1 flex flex-col justify-center">
-        <div className="grid grid-flow-col gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
           {data?.map((tokenPrice) => {
             return (
               <div
@@ -51,7 +51,11 @@ export default function Home() {
                 <p className="text-center text-6xl">
                   {numberWithCommas(tokenPrice.price)}
                 </p>
-                <p>{tokenPrice.last_updated_timestamp}</p>
+                <p>
+                  {new Date(
+                    tokenPrice.last_updated_timestamp
+                  ).toLocaleDateString("en-US")}
+                </p>
               </div>
             );
           })}
