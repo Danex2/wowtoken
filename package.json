@@ -8,13 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "autoprefixer": "^9.8.6",
     "blizzard.js": "^3.2.0",
-    "bumbag": "^1.0.10",
-    "bumbag-server": "^1.0.8",
     "next": "9.5.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "recharts": "^1.8.5",
-    "swr": "^0.3.0"
+    "swr": "^0.3.0",
+    "tailwindcss": "^1.6.2"
   }
 }
