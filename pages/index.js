@@ -3,9 +3,7 @@ import { numberWithCommas } from "@/utils/numberFormat";
 import useSWR from "swr";
 
 export default function Home() {
-  const { data, error } = useSWR("/api/token", {
-    refreshInterval: 10000,
-  });
+  const { data, error } = useSWR("/api/token");
 
   if (error) {
     return (
@@ -36,7 +34,7 @@ export default function Home() {
               cy="12"
               r="10"
               stroke="currentColor"
-              stroke-width="4"
+              strokeWidth="4"
             ></circle>
             <path
               className="opacity-75"
