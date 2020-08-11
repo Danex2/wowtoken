@@ -1,10 +1,10 @@
+const blizzard = require("blizzard.js").initialize({
+  key: process.env.BLIZZARD_CLIENT_ID,
+  secret: process.env.BLIZZARD_CLIENT_SECRET,
+});
+
 export default async (req, res) => {
   try {
-    const blizzard = require("blizzard.js").initialize({
-      key: process.env.BLIZZARD_CLIENT_ID,
-      secret: process.env.BLIZZARD_CLIENT_SECRET,
-    });
-
     const regions = ["us", "eu", "kr", "tw", "cn"];
 
     blizzard.getApplicationToken().then(async (response) => {
