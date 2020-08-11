@@ -1,10 +1,14 @@
 import Layout from "@/components/Layout";
+import Link from "next/link";
 import { numberWithCommas } from "@/utils/numberFormat";
 import useSWR from "swr";
 
 export default function Home() {
   const { data, error } = useSWR("/api/token");
-
+  const { data: regionTokenData } = useSWR(
+    "https://cors-anywhere.herokuapp.com/https://wowtokenprices.com/current_prices.json"
+  );
+  console.table(regionTokenData);
   if (error) {
     return (
       <Layout>
@@ -53,20 +57,22 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
           {data?.map((tokenPrice) => {
             return (
-              <div
-                className="bg-gray-700 p-3 text-white rounded-lg"
-                key={tokenPrice.region}
-              >
-                <h3 className="text-3xl">{tokenPrice.region}</h3>
-                <p className="text-center text-5xl xl:text-6xl">
-                  {numberWithCommas(tokenPrice.price)}
-                </p>
-                <p>
-                  {new Date(
-                    tokenPrice.last_updated_timestamp
-                  ).toLocaleDateString("en-US")}
-                </p>
-              </div>
+              <>
+                <div
+                  className="bg-gray-700 p-3 text-white rounded-lg hover:bg-gray-900 duration-150"
+                  key={tokenPrice.region}
+                >
+                  <h3 className="text-3xl">{tokenPrice.region}</h3>
+                  <p className="text-center text-5xl xl:text-6xl">
+                    {numberWithCommas(tokenPrice.price)}
+                  </p>
+                  <p>
+                    {new Date(
+                      tokenPrice.last_updated_timestamp
+                    ).toLocaleDateString("en-US")}
+                  </p>
+                </div>
+              </>
             );
           })}
         </div>
